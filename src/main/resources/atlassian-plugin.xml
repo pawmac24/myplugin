@@ -17,6 +17,7 @@
     <resource type="download" name="myplugin.js" location="/js/myplugin.js"/>
     <resource type="download" name="images/" location="/images"/>
     <context>myplugin</context>
+    <!--<context>atl.general</context>-->
   </web-resource>
 
   <servlet name="My Plugin Servlet NAME IN XML" i18n-name-key="my-plugin-servlet.name" key="my-plugin-servlet" class="com.atlassian.plugins.tutorial.myplugin.MyPluginServlet">

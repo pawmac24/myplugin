@@ -4,10 +4,12 @@ import com.atlassian.jira.bc.issue.IssueService;
 import com.atlassian.jira.user.ApplicationUser;
 import com.atlassian.plugin.spring.scanner.annotation.imports.ComponentImport;
 import com.atlassian.sal.api.auth.LoginUriProvider;
+import com.atlassian.sal.api.pluginsettings.PluginSettings;
 import com.atlassian.sal.api.pluginsettings.PluginSettingsFactory;
 import com.atlassian.sal.api.user.UserManager;
 import com.atlassian.sal.api.user.UserProfile;
 import com.atlassian.templaterenderer.TemplateRenderer;
+import com.google.common.collect.Maps;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,11 +23,13 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.net.URI;
 import java.text.MessageFormat;
+import java.util.Map;
 
 @Named("myServlet")
-public class MyPluginServlet extends HttpServlet{
+public class MyPluginServlet extends HttpServlet {
 
     private static final Logger log = LoggerFactory.getLogger(MyPluginServlet.class);
+    private static final String PLUGIN_STORAGE_KEY = "com.atlassian.plugins.tutorial.myplugin.myplugin";
 
     @ComponentImport
     private UserManager userManager;
@@ -68,7 +72,6 @@ public class MyPluginServlet extends HttpServlet{
             return;
         }
 
-//        response.setContentType("text/html");
 //        response.getWriter().write(MessageFormat.format("<html><body>Hi {0}({1})! Looking good.</body></html>", user.getUsername(), user.getEmail()));
 //        response.getWriter().write(MessageFormat.format("Hi {0}({1})! Looking good.", user.getUsername(), user.getEmail()));
 
@@ -76,7 +79,34 @@ public class MyPluginServlet extends HttpServlet{
 
         //I assume that you have created project :"TEST_PROJ" and issue "TEST-1"
         IssueService.IssueResult issueResult = issueService.getIssue(appUser, "TEST-1");
+
+        Map<String, Object> context = Maps.newHashMap();
+
+        PluginSettings pluginSettings = pluginSettingsFactory.createGlobalSettings();
+
+        if (pluginSettings.get(PLUGIN_STORAGE_KEY + ".name") == null) {
+            String noName = "Enter a name here.";
+            pluginSettings.put(PLUGIN_STORAGE_KEY + ".name", noName);
+        }
+
+        if (pluginSettings.get(PLUGIN_STORAGE_KEY + ".age") == null) {
+            String noAge = "Enter an age here.";
+            pluginSettings.put(PLUGIN_STORAGE_KEY + ".age", noAge);
+        }
+
+        context.put("name", pluginSettings.get(PLUGIN_STORAGE_KEY + ".name"));
+        context.put("age", pluginSettings.get(PLUGIN_STORAGE_KEY + ".age"));
+
+        response.setContentType("text/html;charset=utf-8");
         templateRenderer.render("admin.vm", response.getWriter());
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse response) throws ServletException, IOException {
+        PluginSettings pluginSettings = pluginSettingsFactory.createGlobalSettings();
+        pluginSettings.put(PLUGIN_STORAGE_KEY + ".name", req.getParameter("name"));
+        pluginSettings.put(PLUGIN_STORAGE_KEY + ".age", req.getParameter("age"));
+        response.sendRedirect("mypluginservlet");
     }
 
     private void redirectToLogin(HttpServletRequest request, HttpServletResponse response) throws IOException {
