@@ -1,49 +1,86 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <atlassian-plugin key="${atlassian.plugin.key}" name="${project.name}" plugins-version="2">
-  <plugin-info>
-    <description>${project.description}</description>
-    <version>${project.version}</version>
-    <vendor name="${project.organization.name}" url="${project.organization.url}"/>
-    <param name="plugin-icon">images/pluginIcon.png</param>
-    <param name="plugin-logo">images/pluginLogo.png</param>
-  </plugin-info>
-  <!-- add our i18n resource -->
-  <resource type="i18n" name="i18n" location="myplugin"/>
-  <!-- add our web resources -->
-  <web-resource key="myplugin-resources" name="myplugin Web Resources">
-    <dependency>com.atlassian.auiplugin:ajs</dependency>
-    <resource type="download" name="myplugin.css" location="/css/myplugin.css"/>
-    <resource type="download" name="myplugin.js" location="/js/myplugin.js"/>
-    <resource type="download" name="images/" location="/images"/>
-    <context>myplugin</context>
-    <!--<context>atl.general</context>-->
-  </web-resource>
+    <plugin-info>
+        <description>${project.description}</description>
+        <version>${project.version}</version>
+        <vendor name="${project.organization.name}" url="${project.organization.url}"/>
+        <param name="plugin-icon">images/pluginIcon.png</param>
+        <param name="plugin-logo">images/pluginLogo.png</param>
+    </plugin-info>
+    <!-- add our i18n resource -->
+    <resource type="i18n" name="i18n" location="myplugin"/>
+    <!-- add our web resources -->
+    <web-resource key="myplugin-resources" name="myplugin Web Resources">
+        <dependency>com.atlassian.auiplugin:ajs</dependency>
+        <resource type="download" name="myplugin.css" location="/css/myplugin.css"/>
+        <resource type="download" name="myplugin.js" location="/js/myplugin.js"/>
+        <resource type="download" name="images/" location="/images"/>
+        <context>myplugin</context>
+        <!--<context>atl.general</context>-->
+    </web-resource>
+    <servlet name="My Plugin Servlet NAME IN XML" i18n-name-key="my-plugin-servlet.name" key="my-plugin-servlet"
+             class="com.atlassian.plugins.tutorial.myplugin.MyPluginServlet">
+        <description key="my-plugin-servlet.description">The My Plugin Servlet Plugin DESCRIPTION IN XML</description>
+        <url-pattern>/mypluginservlet</url-pattern>
+    </servlet>
+    <servlet-context-listener name="My App servlet context listener" key="my-context-listener"
+                              class="com.atlassian.plugins.tutorial.myplugin.MyAppServletContextListener">
+        <description>Initialises my context listener.</description>
+    </servlet-context-listener>
+    <web-section name="mySection IN XML" i18n-name-key="my-section.name" key="my-section" location="client-sites-link"
+                 weight="1000">
+        <description key="my-section.description">The mySection Plugin DESCRIPTION IN XML</description>
+        <!--<label key="my-section.label">USUN TO</label>-->
+    </web-section>
+    <web-item name="Client Sites IN XML" i18n-name-key="client-sites.name" key="client-sites"
+              section="system.top.navigation.bar" weight="1000">
+        <description key="client-sites.description">The Client Sites Plugin DESCRIPTION IN XML</description>
+        <label key="client-sites.label"/>
+        <link linkId="client-sites-link"/>
+    </web-item>
+    <web-item name="Radio Paradise IN XML" i18n-name-key="radio-paradise.name" key="radio-paradise"
+              section="client-sites-link/my-section" weight="1000">
+        <description key="radio-paradise.description">The Radio Paradise Plugin DESCRIPTION IN XML</description>
+        <label key="radio-paradise.label"/>
+        <link linkId="radio-paradise-link">http://www.radioparadise.com</link>
+    </web-item>
+    <web-item name="Google page IN XML" i18n-name-key="google-page.name" key="google-page"
+              section="client-sites-link/my-section" weight="1000">
+        <description key="google-page.description">The google-page Plugin DESCRIPTION IN XML</description>
+        <label key="google-page.label"/>
+        <link linkId="google-page-link">http://www.google.pl</link>
+    </web-item>
 
-  <servlet name="My Plugin Servlet NAME IN XML" i18n-name-key="my-plugin-servlet.name" key="my-plugin-servlet" class="com.atlassian.plugins.tutorial.myplugin.MyPluginServlet">
-    <description key="my-plugin-servlet.description">The My Plugin Servlet Plugin DESCRIPTION IN XML</description>
-    <url-pattern>/mypluginservlet</url-pattern>
-  </servlet>
+    <web-section name="secondSection IN XML" i18n-name-key="secondSection.name" key="secondSection" location="different-sites-link" weight="1000">
+        <description key="secondSection.description">The secondSection Plugin DESCRIPTION IN XML</description>
+    </web-section>
+    <web-item name="Different Sites IN XML" i18n-name-key="different-sites.name" key="different-sites" section="system.top.navigation.bar" weight="1000">
+        <description key="different-sites.description">The Different Sites Plugin DESCRIPTION IN XML</description>
+        <label key="different-sites.label"/>
+        <link linkId="different-sites-link"/>
+    </web-item>
+    <web-item name="WP page IN XML" i18n-name-key="wp cos tam" key="wp-page"
+              section="different-sites-link/secondSection" weight="1000">
+        <description key="wp page description">The google-page Plugin DESCRIPTION IN XML</description>
+        <label key="wp label"/>
+        <link linkId="wp-page-link">http://www.wp.pl</link>
+    </web-item>
 
-  <web-section name="mySection IN XML" i18n-name-key="my-section.name" key="my-section" location="client-sites-link" weight="1000">
-    <description key="my-section.description">The mySection Plugin DESCRIPTION IN XML</description>
-    <!--<label key="my-section.label">USUN TO</label>-->
-  </web-section>
-  <web-item name="Client Sites IN XML" i18n-name-key="client-sites.name" key="client-sites" section="system.top.navigation.bar" weight="1000">
-    <description key="client-sites.description">The Client Sites Plugin DESCRIPTION IN XML</description>
-    <label key="client-sites.label"/>
-    <link linkId="client-sites-link"/>
-  </web-item>
-  <web-item name="Radio Paradise IN XML" i18n-name-key="radio-paradise.name" key="radio-paradise" section="client-sites-link/my-section" weight="1000">
-    <description key="radio-paradise.description">The Radio Paradise Plugin DESCRIPTION IN XML</description>
-    <label key="radio-paradise.label"/>
-    <link linkId="radio-paradise-link">http://www.radioparadise.com</link>
-  </web-item>
+    <!--<component-import key="appProps" interface="com.atlassian.sal.api.ApplicationProperties" filter=""/>-->
+    <component key="helloWorldService" class="com.atlassian.plugins.tutorial.myplugin.MyHelloWorldService" public="true">
+        <interface>atlassian.plugins.tutorial.myplugin.HelloWorldService</interface>
+    </component>
 
-  <component-import key="appProps" interface="com.atlassian.sal.api.ApplicationProperties" filter=""/>
-
-  <component key="helloWorldService" class="com.atlassian.plugins.tutorial.myplugin.MyHelloWorldService" public="true">
-    <interface>atlassian.plugins.tutorial.myplugin.HelloWorldService</interface>
-  </component>
-
+    <webwork1 key="mywebwork" name="mywebwork" i18n-name-key="mywebwork.name">
+        <description key="mywebwork.description">The mywebwork Plugin</description>
+        <actions>
+            <!--http://localhost:2990/jira/secure/MyWebworkAction.jspa-->
+            <action name="com.atlassian.plugins.tutorial.myplugin.jira.webwork.MyWebworkAction" alias="MyWebworkAction">
+                <view name="success">/templates/mywebwork/success.vm</view>
+                <view name="input">/templates/mywebwork/input.vm</view>
+                <view name="error">/templates/mywebwork/error.vm</view>
+            </action>
+        </actions>
+    </webwork1>
 </atlassian-plugin>
