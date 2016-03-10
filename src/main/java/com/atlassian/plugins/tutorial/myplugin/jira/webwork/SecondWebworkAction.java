@@ -4,10 +4,12 @@ import com.atlassian.jira.web.action.JiraWebActionSupport;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Enumeration;
+
 //@Component
-public class MyWebworkAction extends JiraWebActionSupport
+public class SecondWebworkAction extends JiraWebActionSupport
 {
-    private static final Logger log = LoggerFactory.getLogger(MyWebworkAction.class);
+    private static final Logger log = LoggerFactory.getLogger(SecondWebworkAction.class);
 
 //    @ComponentImport
 //    private ApplicationProperties applicationProperties;
@@ -28,6 +30,14 @@ public class MyWebworkAction extends JiraWebActionSupport
 
     protected String doExecute() throws Exception {
         log.debug("=== Entering doExecute ===");
+
+//        Enumeration<String> parameterNames = getHttpRequest().getParameterNames();
+//        while (parameterNames.hasMoreElements()){
+//            log.debug("=== parameter = {}" ,parameterNames.nextElement());
+//        }
+
+        String myfirstparameter = getHttpRequest().getParameter("myfirstparameter");
+        log.debug("=== parameter myfirstparameter = {}", myfirstparameter);
         return SUCCESS;
     }
 
@@ -36,16 +46,8 @@ public class MyWebworkAction extends JiraWebActionSupport
         return super.doDefault();
     }
 
-    private String aStringVariable = "a default value";
-
-    public void setMyfirstparameter(String value) {
-        log.debug("=== Setting aStringVariable to: " + value + "====");
-        this.aStringVariable = value;
+    public String doMycommand() throws Exception {
+        log.debug("=== Entering doMycommand ===");
+        return SUCCESS;
     }
-
-    public String getMyfirstparameter() {
-        log.debug("=== Getting aStringVariable === ");
-        return aStringVariable;
-    }
-
 }

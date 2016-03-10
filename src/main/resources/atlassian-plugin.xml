@@ -66,20 +66,42 @@
         <label key="wp label"/>
         <link linkId="wp-page-link">http://www.wp.pl</link>
     </web-item>
+    <web-item name="MyWebworkAction IN XML" i18n-name-key="MyWebworkAction cos tam" key="mwa-page"
+              section="different-sites-link/secondSection" weight="1000">
+        <description key="MyWebworkAction page description">The MyWebworkAction DESCRIPTION IN XML</description>
+        <label key="MyWebworkAction label"/>
+        <link linkId="mwa-page-link">/secure/MyWebworkAction.jspa</link>
+    </web-item>
 
     <!--<component-import key="appProps" interface="com.atlassian.sal.api.ApplicationProperties" filter=""/>-->
-    <component key="helloWorldService" class="com.atlassian.plugins.tutorial.myplugin.MyHelloWorldService" public="true">
-        <interface>atlassian.plugins.tutorial.myplugin.HelloWorldService</interface>
-    </component>
+    <!--<component key="helloWorldService" class="com.atlassian.plugins.tutorial.myplugin.MyHelloWorldService" public="true">-->
+        <!--<interface>atlassian.plugins.tutorial.myplugin.HelloWorldService</interface>-->
+    <!--</component>-->
 
     <webwork1 key="mywebwork" name="mywebwork" i18n-name-key="mywebwork.name">
         <description key="mywebwork.description">The mywebwork Plugin</description>
         <actions>
             <!--http://localhost:2990/jira/secure/MyWebworkAction.jspa-->
-            <action name="com.atlassian.plugins.tutorial.myplugin.jira.webwork.MyWebworkAction" alias="MyWebworkAction">
+            <action name="com.atlassian.plugins.tutorial.myplugin.jira.webwork.MyWebworkAction" alias="MyWebworkAction" roles-required="admin">
                 <view name="success">/templates/mywebwork/success.vm</view>
                 <view name="input">/templates/mywebwork/input.vm</view>
                 <view name="error">/templates/mywebwork/error.vm</view>
+            </action>
+            <!--http://localhost:2990/jira/secure/SecondWebworkAction.jspa-->
+            <action name="com.atlassian.plugins.tutorial.myplugin.jira.webwork.SecondWebworkAction" alias="SecondWebworkAction" roles-required="admin">
+                <view name="success">/templates/mywebwork/second/success.vm</view>
+                <view name="input">/templates/mywebwork/second/input.vm</view>
+                <view name="error">/templates/mywebwork/second/error.vm</view>
+
+                <command name="mycommand" alias="CommandOne">
+                    <view name="success">/templates/mywebwork/second/commandone.vm</view>
+                </command>
+
+                <!--&lt;!&ndash; This command reuses the same Action method as CommandOne &ndash;&gt;-->
+                <!--<command name="mycommand" alias="CommandTwo">-->
+                    <!--<view name="success">/templates/com/consultingtoolsmiths/jira/samples/webwork/commandtwo.vm</view>-->
+                <!--</command>-->
+
             </action>
         </actions>
     </webwork1>

@@ -1,1 +1,13 @@
-<h1>success.vm</h1>
+<html>
+    <head>
+        <title>This is first success</title>
+    </head>
+    <body>
+        <h1>success.vm</h1>
+        <form id="myFormId" method="post" action="${req.contextPath}/secure/SecondWebworkAction.jspa">
+            <input type="text" id="myfirstparameter" name="myfirstparameter"
+                   size="60" value="${myfirstparameter}" />
+            <input type="submit" name="Cancel" id="Cancel" value="Cancel"/>
+        </form>
+    </body>
+</html>
