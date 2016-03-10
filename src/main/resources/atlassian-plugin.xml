@@ -93,14 +93,15 @@
                 <view name="input">/templates/mywebwork/second/input.vm</view>
                 <view name="error">/templates/mywebwork/second/error.vm</view>
 
+                <!--http://localhost:2990/jira/secure/CommandOne.jspa-->
                 <command name="mycommand" alias="CommandOne">
                     <view name="success">/templates/mywebwork/second/commandone.vm</view>
                 </command>
 
-                <!--&lt;!&ndash; This command reuses the same Action method as CommandOne &ndash;&gt;-->
-                <!--<command name="mycommand" alias="CommandTwo">-->
-                    <!--<view name="success">/templates/com/consultingtoolsmiths/jira/samples/webwork/commandtwo.vm</view>-->
-                <!--</command>-->
+                <!--http://localhost:2990/jira/secure/CommandTwo.jspa-->
+                <command name="mycommand" alias="CommandTwo">
+                    <view name="success">/templates/mywebwork/second/commandtwo.vm</view>
+                </command>
 
             </action>
         </actions>

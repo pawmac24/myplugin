@@ -21,15 +21,15 @@ public class SecondWebworkAction extends JiraWebActionSupport
 
     @Override
     public String execute() throws Exception {
-        log.debug("=== Entering execute ===");
+        log.debug("=== (1) Entering execute ===");
         return super.execute(); //returns SUCCESS
     }
     protected void doValidation() {
-        log.debug("=== Entering doValidation ===");
+        log.debug("=== (2) Entering doValidation ===");
     }
 
     protected String doExecute() throws Exception {
-        log.debug("=== Entering doExecute ===");
+        log.debug("=== (3) Entering doExecute ===");
 
 //        Enumeration<String> parameterNames = getHttpRequest().getParameterNames();
 //        while (parameterNames.hasMoreElements()){
@@ -48,7 +48,7 @@ public class SecondWebworkAction extends JiraWebActionSupport
     }
 
     public String doMycommand() throws Exception {
-        log.debug("=== Entering doMycommand ===");
+        log.debug("=== (2) Entering doMycommand ===");
         return SUCCESS;
     }
 

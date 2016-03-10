@@ -2,9 +2,12 @@
     <head>
         <title>This is second success</title>
         <meta name="decorator" content="atl.admin">
+        $webResourceManager.requireResource("com.atlassian.plugins.tutorial.myplugin.myplugin:myplugin-resources")
     </head>
     <body>
         <h1>second success.vm</h1>
         <p>My current parameter value is: $action.getMyfirstparameter()</p>
+        <a href="$requestContext.canonicalBaseUrl/secure/CommandOne.jspa">Execute Command One</a><br />
+        <a href="$requestContext.canonicalBaseUrl/secure/CommandTwo.jspa">Execute Command Two</a>
     </body>
 </html>
