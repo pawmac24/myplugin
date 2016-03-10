@@ -36,16 +36,16 @@ public class MyWebworkAction extends JiraWebActionSupport
         return super.doDefault();
     }
 
-    private String aStringVariable = "a default value";
+    private String myfirstparameter = "a default value";
 
     public void setMyfirstparameter(String value) {
         log.debug("=== Setting aStringVariable to: " + value + "====");
-        this.aStringVariable = value;
+        this.myfirstparameter = value;
     }
 
     public String getMyfirstparameter() {
         log.debug("=== Getting aStringVariable === ");
-        return aStringVariable;
+        return myfirstparameter;
     }
 
 }

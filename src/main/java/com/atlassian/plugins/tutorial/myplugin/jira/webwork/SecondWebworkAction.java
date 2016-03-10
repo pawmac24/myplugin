@@ -37,6 +37,7 @@ public class SecondWebworkAction extends JiraWebActionSupport
 //        }
 
         String myfirstparameter = getHttpRequest().getParameter("myfirstparameter");
+        this.myfirstparameter = myfirstparameter;
         log.debug("=== parameter myfirstparameter = {}", myfirstparameter);
         return SUCCESS;
     }
@@ -49,5 +50,17 @@ public class SecondWebworkAction extends JiraWebActionSupport
     public String doMycommand() throws Exception {
         log.debug("=== Entering doMycommand ===");
         return SUCCESS;
+    }
+
+    private String myfirstparameter;
+
+//    public void setMyfirstparameter(String value) {
+//        log.debug("=== Setting myfirstparameter to: " + value + "====");
+//        this.myfirstparameter = value;
+//    }
+
+    public String getMyfirstparameter() {
+        log.debug("=== Getting myfirstparameter === ");
+        return myfirstparameter;
     }
 }

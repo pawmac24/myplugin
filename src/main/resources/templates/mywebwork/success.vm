@@ -1,13 +1,19 @@
 <html>
     <head>
         <title>This is first success</title>
+        <meta name="decorator" content="atl.admin">
     </head>
     <body>
         <h1>success.vm</h1>
-        <form id="myFormId" method="post" action="${req.contextPath}/secure/SecondWebworkAction.jspa">
-            <input type="text" id="myfirstparameter" name="myfirstparameter"
-                   size="60" value="${myfirstparameter}" />
-            <input type="submit" name="Cancel" id="Cancel" value="Cancel"/>
+        <form id="myFormId" method="post" action="${req.contextPath}/secure/SecondWebworkAction.jspa" class="aui">
+            <div class="field-group">
+                <label for="myfirstparameter">First parameter:</label>
+                <input type="text" id="myfirstparameter" name="myfirstparameter"
+                       size="60" value="${myfirstparameter}" class="text" />
+            </div>
+            <div class="field-group">
+                <input type="submit" name="Send" id="Send" value="Send" class="button"/>
+            </div>
         </form>
     </body>
 </html>

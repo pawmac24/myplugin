@@ -1,1 +1,10 @@
-<h1>second success.vm</h1>
+<html>
+    <head>
+        <title>This is second success</title>
+        <meta name="decorator" content="atl.admin">
+    </head>
+    <body>
+        <h1>second success.vm</h1>
+        <p>My current parameter value is: $action.getMyfirstparameter()</p>
+    </body>
+</html>
