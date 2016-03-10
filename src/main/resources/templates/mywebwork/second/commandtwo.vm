@@ -1,1 +1,10 @@
-<h1>second commandtwo.vm</h1>
+<html>
+    <head>
+        <title>second commandtwo.vm</title>
+        <meta name="decorator" content="atl.admin">
+        $webResourceManager.requireResource("com.atlassian.plugins.tutorial.myplugin.myplugin:myplugin-resources")
+    </head>
+    <body>
+        <h1>second commandtwo.vm</h1>
+    </body>
+</html>

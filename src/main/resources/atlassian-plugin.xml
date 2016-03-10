@@ -13,6 +13,7 @@
     <!-- add our web resources -->
     <web-resource key="myplugin-resources" name="myplugin Web Resources">
         <dependency>com.atlassian.auiplugin:ajs</dependency>
+        <dependency>com.atlassian.auiplugin:dialog2</dependency>
         <resource type="download" name="myplugin.css" location="/css/myplugin.css"/>
         <resource type="download" name="myplugin.js" location="/js/myplugin.js"/>
         <resource type="download" name="images/" location="/images"/>
