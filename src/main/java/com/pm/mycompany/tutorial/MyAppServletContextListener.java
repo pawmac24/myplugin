@@ -1,4 +1,4 @@
-package com.atlassian.plugins.tutorial.myplugin;
+package com.pm.mycompany.tutorial;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -23,18 +23,16 @@
         </dependency>
         <!-- Add dependency on jira-core if you want access to JIRA implementation classes as well as the sanctioned API. -->
         <!-- This is not normally recommended, but may be required eg when migrating a plugin originally developed against JIRA 4.x -->
-        <!--&lt;!&ndash;-->
-        <!--<dependency>-->
-        <!--<groupId>com.atlassian.jira</groupId>-->
-        <!--<artifactId>jira-core</artifactId>-->
-        <!--<version>${jira.version}</version>-->
-        <!--<scope>provided</scope>-->
-        <!--</dependency>-->
-        <!--&ndash;&gt;-->
+        <dependency>
+            <groupId>com.atlassian.jira</groupId>
+            <artifactId>jira-core</artifactId>
+            <version>${jira.version}</version>
+            <scope>provided</scope>
+        </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.10</version>
+            <version>4.12</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -116,12 +114,35 @@
             <version>14.0.1</version>
             <scope>provided</scope>
         </dependency>
+
+
+
+        <!-- Logging -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>1.6.6</version>
+            <version>1.7.9</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.7.9</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+            <version>1.1.1</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!--<dependency>-->
+            <!--<groupId>org.slf4j</groupId>-->
+            <!--<artifactId>slf4j-api</artifactId>-->
+            <!--<version>1.6.6</version>-->
+            <!--<scope>provided</scope>-->
+        <!--</dependency>-->
         <!--<dependency>-->
             <!--<groupId>org.apache.httpcomponents</groupId>-->
             <!--<artifactId>httpclient</artifactId>-->
@@ -131,10 +152,13 @@
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-all</artifactId>
-            <version>1.8.5</version>
+            <!--<version>1.8.5</version>-->
+            <version>1.10.19</version>
             <scope>test</scope>
         </dependency>
+
     </dependencies>
+
     <build>
         <plugins>
             <plugin>
@@ -163,15 +187,39 @@
 
                         <!-- Add package to export here -->
                         <Export-Package>
-                            com.atlassian.plugins.tutorial.myplugin,
+                            com.pm.mycompany.tutorial.*,
                         </Export-Package>
 
                         <!-- Add package import here -->
                         <Import-Package>
-                            org.springframework.osgi.*;resolution:="optional",
-                            org.eclipse.gemini.blueprint.*;resolution:="optional",
+                            <!--org.springframework.osgi.*;resolution:="optional",-->
+                            <!--org.eclipse.gemini.blueprint.*;resolution:="optional",-->
+                            <!--com.atlassian.plugin.spring.scanner.annotation.imports.*;resolution:="optional",-->
+                            <!--webwork.action;version="0.0.0",-->
+                            <!--*-->
+
                             com.atlassian.plugin.spring.scanner.annotation.imports.*;resolution:="optional",
-                            *
+                            org.springframework.osgi.*;version="0.0.0";resolution:="optional",
+                            org.springframework.beans*;version="0.0.0",
+                            org.springframework.stereotype*;version="0.0.0",
+                            org.springframework.util*;version="0.0.0",
+                            org.springframework.context*;version="0.0.0",
+                            org.osgi.framework*;version="1.7.0",
+                            org.osgi.util*;version="1.5.1",
+                            com.atlassian*;version="0.0.0",
+                            com.atlassian.jira.action;version="0.0.0",
+                            webwork.action;version="0.0.0",
+                            org.eclipse.gemini.blueprint*;version="0.0.0";resolution:="optional",
+                            org.w3c.dom;version="0.0.0",
+                            com.google.common.*;version="18.0.0",
+                            org.apache.commons.lang;version="1.23.0",
+                            javax.servlet;version="0.0.0",
+                            javax.servlet.http;version="0.0.0",
+                            javax.inject;version="1.2.0",
+                            <!-- Logging -->
+                            org.slf4j*;version="1.7.9",
+                            org.apache.commons.logging*;version="1.1.1"
+
                         </Import-Package>
 
                         <!-- Ensure plugin is spring powered - see https://extranet.atlassian.com/x/xBS9hQ  -->
@@ -209,7 +257,8 @@
         <amps.version>6.2.1</amps.version>
         <plugin.testrunner.version>1.2.3</plugin.testrunner.version>
         <atlassian.spring.scanner.version>1.2.6</atlassian.spring.scanner.version>
-        <springframework.version>4.2.4.RELEASE</springframework.version>
+        <!--<springframework.version>4.2.4.RELEASE</springframework.version>-->
+        <springframework.version>4.1.6.RELEASE</springframework.version>
         <!-- This key is used to keep the consistency between the key in atlassian-plugin.xml and the key to generate bundle. -->
         <atlassian.plugin.key>${project.groupId}.${project.artifactId}</atlassian.plugin.key>
         <!-- TestKit version 6.x for JIRA 6.x -->

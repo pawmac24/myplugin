@@ -2,7 +2,7 @@
     <head>
         <title>$i18n.getText("myplugin.title.label")</title>
         <meta name="decorator" content="atl.admin">
-        $webResourceManager.requireResource("com.atlassian.plugins.tutorial.myplugin.myplugin:myplugin-resources")
+        $webResourceManager.requireResource("com.pm.mycompany.tutorial.myplugin:myplugin-resources")
     </head>
     <body>
     <form id="admin" class="aui" action="" method="POST">

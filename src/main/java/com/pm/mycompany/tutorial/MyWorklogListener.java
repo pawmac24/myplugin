@@ -1,15 +1,9 @@
-package com.atlassian.plugins.tutorial.myplugin;
+package com.pm.mycompany.tutorial;
 
 import com.atlassian.event.api.EventListener;
 import com.atlassian.event.api.EventPublisher;
 import com.atlassian.jira.event.worklog.WorklogEvent;
 import com.atlassian.plugin.spring.scanner.annotation.imports.ComponentImport;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.impl.client.HttpClients;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.DisposableBean;

@@ -1,4 +1,4 @@
-package com.atlassian.plugins.tutorial.myplugin;
+package com.pm.mycompany.tutorial;
 
 import com.atlassian.jira.bc.issue.IssueService;
 import com.atlassian.jira.user.ApplicationUser;
@@ -12,7 +12,6 @@ import com.atlassian.templaterenderer.TemplateRenderer;
 import com.google.common.collect.Maps;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -22,7 +21,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.net.URI;
-import java.text.MessageFormat;
 import java.util.Map;
 
 @Named("myServlet")

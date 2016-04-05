@@ -1,21 +1,14 @@
-package com.atlassian.plugins.tutorial.myplugin.jira.webwork;
+package com.pm.mycompany.tutorial.jira.webwork;
 
 import com.atlassian.jira.web.action.JiraWebActionSupport;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 
-//@Component
+@Component
 public class MyWebworkAction extends JiraWebActionSupport
 {
     private static final Logger log = LoggerFactory.getLogger(MyWebworkAction.class);
-
-//    @ComponentImport
-//    private ApplicationProperties applicationProperties;
-
-//    @Autowired
-//    public MyWebworkAction(ApplicationProperties applicationProperties) {
-//        this.applicationProperties = applicationProperties;
-//    }
 
     @Override
     public String execute() throws Exception {
@@ -26,11 +19,13 @@ public class MyWebworkAction extends JiraWebActionSupport
         log.debug("=== (2) Entering doValidation ===");
     }
 
+    @Override
     protected String doExecute() throws Exception {
         log.debug("=== (3) Entering doExecute ===");
         return SUCCESS;
     }
 
+    @Override
     public String doDefault() throws Exception {
         log.debug("=== Entering doDefault ===");
         return super.doDefault();

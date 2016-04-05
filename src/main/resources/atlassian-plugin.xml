@@ -10,6 +10,13 @@
     </plugin-info>
     <!-- add our i18n resource -->
     <resource type="i18n" name="i18n" location="myplugin"/>
+
+    <!--<component key="jiraDurationUtils" name="JIRA Duration Utils" class="com.atlassian.jira.util.JiraDurationUtils"></component>-->
+    <!--<component-import key="jiraDurationUtils" interface="com.atlassian.jira.util.JiraDurationUtils" />-->
+    <!--<component key="jiraDurationUtils" name="JIRA Duration Utils" class="com.atlassian.jira.util.JiraDurationUtils">-->
+        <!--<interface>com.atlassian.jira.util.JiraDurationUtils</interface>-->
+    <!--</component>-->
+
     <!-- add our web resources -->
     <web-resource key="myplugin-resources" name="myplugin Web Resources">
         <dependency>com.atlassian.auiplugin:ajs</dependency>
@@ -21,12 +28,12 @@
         <!--<context>atl.general</context>-->
     </web-resource>
     <servlet name="My Plugin Servlet NAME IN XML" i18n-name-key="my-plugin-servlet.name" key="my-plugin-servlet"
-             class="com.atlassian.plugins.tutorial.myplugin.MyPluginServlet">
+             class="com.pm.mycompany.tutorial.MyPluginServlet">
         <description key="my-plugin-servlet.description">The My Plugin Servlet Plugin DESCRIPTION IN XML</description>
         <url-pattern>/mypluginservlet</url-pattern>
     </servlet>
     <servlet-context-listener name="My App servlet context listener" key="my-context-listener"
-                              class="com.atlassian.plugins.tutorial.myplugin.MyAppServletContextListener">
+                              class="com.pm.mycompany.tutorial.MyAppServletContextListener">
         <description>Initialises my context listener.</description>
     </servlet-context-listener>
     <web-section name="mySection IN XML" i18n-name-key="my-section.name" key="my-section" location="client-sites-link"
@@ -74,22 +81,17 @@
         <link linkId="mwa-page-link">/secure/MyWebworkAction.jspa</link>
     </web-item>
 
-    <!--<component-import key="appProps" interface="com.atlassian.sal.api.ApplicationProperties" filter=""/>-->
-    <!--<component key="helloWorldService" class="com.atlassian.plugins.tutorial.myplugin.MyHelloWorldService" public="true">-->
-        <!--<interface>atlassian.plugins.tutorial.myplugin.HelloWorldService</interface>-->
-    <!--</component>-->
-
     <webwork1 key="mywebwork" name="mywebwork" i18n-name-key="mywebwork.name">
         <description key="mywebwork.description">The mywebwork Plugin</description>
         <actions>
             <!--http://localhost:2990/jira/secure/MyWebworkAction.jspa-->
-            <action name="com.atlassian.plugins.tutorial.myplugin.jira.webwork.MyWebworkAction" alias="MyWebworkAction" roles-required="admin">
+            <action name="com.pm.mycompany.tutorial.jira.webwork.MyWebworkAction" alias="MyWebworkAction" roles-required="admin">
                 <view name="success">/templates/mywebwork/success.vm</view>
                 <view name="input">/templates/mywebwork/input.vm</view>
                 <view name="error">/templates/mywebwork/error.vm</view>
             </action>
             <!--http://localhost:2990/jira/secure/SecondWebworkAction.jspa-->
-            <action name="com.atlassian.plugins.tutorial.myplugin.jira.webwork.SecondWebworkAction" alias="SecondWebworkAction" roles-required="admin">
+            <action name="com.pm.mycompany.tutorial.jira.webwork.SecondWebworkAction" alias="SecondWebworkAction" roles-required="admin">
                 <view name="success">/templates/mywebwork/second/success.vm</view>
                 <view name="input">/templates/mywebwork/second/input.vm</view>
                 <view name="error">/templates/mywebwork/second/error.vm</view>
@@ -105,6 +107,7 @@
                 </command>
 
             </action>
+
         </actions>
     </webwork1>
 </atlassian-plugin>

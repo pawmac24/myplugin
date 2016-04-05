@@ -1,4 +1,4 @@
-package com.atlassian.plugins.tutorial.myplugin;
+package com.pm.mycompany.tutorial;
 
 /**
  * Created by pmackiewicz on 2016-02-23.
