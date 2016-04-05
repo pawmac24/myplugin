@@ -24,7 +24,6 @@ public class MyWorklogListener implements InitializingBean, DisposableBean {
     @ComponentImport
     private EventPublisher eventPublisher;
 
-
     @Autowired
     public MyWorklogListener(EventPublisher eventPublisher) {
         this.eventPublisher = eventPublisher;
@@ -41,17 +40,5 @@ public class MyWorklogListener implements InitializingBean, DisposableBean {
     @EventListener
     public void onWorlogEvent(WorklogEvent event) throws IOException {
         logger.info("Worlog event called");
-
-//        String url = "http://localhost:2990/jira/plugins/servlet/mypluginservlet";
-//        String USER_AGENT = "Mozilla/5.0";
-//        CloseableHttpClient httpClient = HttpClients.createDefault();
-//
-//        HttpGet httpGet = new HttpGet(url);
-//        httpGet.addHeader("User-Agent", USER_AGENT);
-//        CloseableHttpResponse httpResponse = httpClient.execute(httpGet);
-//
-//        System.out.println("GET Response Status:: "
-//                + httpResponse.getStatusLine().getStatusCode());
-//        httpClient.close();
     }
 }

@@ -11,12 +11,6 @@
     <!-- add our i18n resource -->
     <resource type="i18n" name="i18n" location="myplugin"/>
 
-    <!--<component key="jiraDurationUtils" name="JIRA Duration Utils" class="com.atlassian.jira.util.JiraDurationUtils"></component>-->
-    <!--<component-import key="jiraDurationUtils" interface="com.atlassian.jira.util.JiraDurationUtils" />-->
-    <!--<component key="jiraDurationUtils" name="JIRA Duration Utils" class="com.atlassian.jira.util.JiraDurationUtils">-->
-        <!--<interface>com.atlassian.jira.util.JiraDurationUtils</interface>-->
-    <!--</component>-->
-
     <!-- add our web resources -->
     <web-resource key="myplugin-resources" name="myplugin Web Resources">
         <dependency>com.atlassian.auiplugin:ajs</dependency>
