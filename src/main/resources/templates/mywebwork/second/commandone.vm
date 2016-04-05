@@ -1,1 +1,11 @@
 <h1>second commandone.vm</h1>
+
+#set( $helloName = "Velocity" )
+Hello $helloName World!
+<br /><br />
+
+#set( $countries = ["Poland", "Germany", "Russia"] )
+
+#foreach( $country in $countries )
+    $country <br />
+#end
